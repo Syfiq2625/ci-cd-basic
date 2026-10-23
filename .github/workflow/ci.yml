@@ -1,0 +1,26 @@
+name: Jalankan Pengujian Otomatis
+
+# 1. EVENT: Trigger berjalan saat PUSH ke main ATAU saat ada Pull Request (PR)
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# 2. JOB: Stasiun kerja kita
+jobs:
+  tes-aplikasi:
+    runs-on: ubuntu-latest # Menggunakan runner Ubuntu
+
+    # 3. STEPS: Langkah berurutan yang dijalankan robot
+    steps:
+      - name: Copy kode dari GitHub ke Runner
+        uses: actions/checkout@v4
+
+      - name: Siapkan Node.js di Runner
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Jalankan Tes Logika Kode
+        run: node index.test.js
