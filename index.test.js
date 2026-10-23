@@ -6,3 +6,5 @@ test('Menguji 2 + 3 harus menghasilkan 5', () => {
     }
     console.log("Tes Lolos! Perhitungan benar.");
 });
+
+test()
