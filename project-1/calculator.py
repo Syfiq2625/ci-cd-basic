@@ -15,4 +15,7 @@ def divide(a, b):
         raise ValueError("Tidak bisa dibagi nol")
     return a / b
 
+def modulo(a, b):
+    return a % b
+
 # Memicu CI
