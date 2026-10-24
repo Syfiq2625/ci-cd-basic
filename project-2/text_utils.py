@@ -7,6 +7,6 @@ def is_palindrome(text: str) -> bool:
 
 def reverse_string(text: str) -> str:
     """Membalik urutan karakter dalam teks."""
-    return text[::-1]
+    return text
 
 # Memicu CI 
