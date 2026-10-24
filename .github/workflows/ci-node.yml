@@ -1,0 +1,32 @@
+name: Jalankan Pengujian Otomatis Monorepo
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'project-node/**' # 🎯 PARAMETER KONTROL 1: Hanya jalan jika ada perubahan di folder project-node
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'project-node/**' # 🎯 Hanya jalan jika ada Pull Request yang mengubah folder ini
+
+jobs:
+  tes-aplikasi:
+    runs-on: ubuntu-latest
+
+    # 🎯 PARAMETER KONTROL 2: Mengatur agar semua perintah 'run' otomatis masuk ke folder project-node
+    defaults:
+      run:
+        working-directory: project-node
+
+    steps:
+      - name: Copy kode dari GitHub ke Runner
+        uses: actions/checkout@v4
+
+      - name: Siapkan Node.js di Runner
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Jalankan Tes Logika Kode
+        run: node index.test.js # Karena ada 'defaults' di atas, robot otomatis mengetik ini di dalam folder project-node
