@@ -14,3 +14,5 @@ def divide(a, b):
     if b == 0:
         raise ValueError("Tidak bisa dibagi nol")
     return a / b
+
+# Memicu CI
