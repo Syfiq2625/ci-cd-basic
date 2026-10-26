@@ -11,6 +11,17 @@ on:
     paths:
       - 'project-1/**'
 
+  workflow_dispatch:
+    inputs:
+      log_level:
+        description: 'Level logging untuk pytest'
+        required: true
+        default: 'normal'
+        type: choice
+        options:
+          - normal
+          - verbose
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -35,4 +46,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run tests
-        run: pytest -v
+        run: |
+          if [ "${{ github.event.inputs.log_level }}" == "verbose" ]; then
+            pytest -vv
+          else
+            pytest -v
+          fi
