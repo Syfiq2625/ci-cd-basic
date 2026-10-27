@@ -1,0 +1,42 @@
+name: CI Project 3 (uv)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'project-3/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'project-3/**'
+
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: ./project-3
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 1. Install uv (menggantikan setup-python)
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          # Sangat disarankan untuk mem-pin versi uv agar stabil
+          version: "0.5.0" 
+          # Mengaktifkan cache bawaan uv (lebih cepat dari cache pip)
+          enable-cache: true
+
+      # 2. Sinkronisasi dependensi (menggantikan pip install -r)
+      - name: Install dependencies
+        run: uv sync --locked --all-extras --dev
+
+      # 3. Jalankan test menggunakan uv run
+      - name: Run tests
+        run: uv run pytest -v
