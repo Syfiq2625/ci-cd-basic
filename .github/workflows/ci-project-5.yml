@@ -22,7 +22,7 @@ jobs:
         shell: bash
 
     env:
-      PYTHONVERSION: "3.12"
+      PYTHONVERSION: 3.12
 
     steps:
       - name: Checkout Repository
@@ -36,7 +36,7 @@ jobs:
       - name: Python-Version
         id: python-version
         run: |
-          if ["$PYTHONVERSION" == "3.12"]; then
+          if ["$PYTHONVERSION" == 3.12]; then
             echo "python_version=3.12" >> "$GITHUB_OUTPUT"
           else
             echo "python_version=invalid" >> "$GITHUB_OUTPUT"
@@ -48,7 +48,9 @@ jobs:
           pip install -r requirements.txt
         
       - name: Run tests
-        run: python -m pytest -v
+        run: |
+          python -m pytest -v
+          python main.py
 
       - name: Error tests
         run: exit 1
