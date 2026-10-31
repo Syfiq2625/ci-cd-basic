@@ -1,0 +1,39 @@
+name: CI Project-5 (Data csv)
+
+on:
+  push:
+    branches: [main]
+    paths: 'project-5/**'
+
+  pull_request:
+    branches: [main]
+    paths: 'project-5/**'
+
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    defaults:
+      run:
+        working-directory: ./project-5
+        shell: bash
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Setup-Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+        
+      - name: Run tests
+        run: python -m pytest -v
