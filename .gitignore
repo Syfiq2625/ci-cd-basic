@@ -7,3 +7,6 @@
 # Node
 **/node_modules/
 project-3/.venv/
+
+venv/
+.venv/
