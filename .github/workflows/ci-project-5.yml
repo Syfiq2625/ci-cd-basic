@@ -33,13 +33,13 @@ jobs:
       - name: Python-Version
         id: python-version
         run: |
-          if ["$PYTHONVERSION" == 3.12]; then
+          if ["$PYTHONVERSION" == "3.12"]; then
             echo "python_version=3.12" >> "$GITHUB_OUTPUT"
           else
             echo "python_version=invalid" >> "$GITHUB_OUTPUT"
           fi
         env:
-          PYTHONVERSION: 3.12
+          PYTHONVERSION: "3.12"
             
 
       - name: Install Dependencies
