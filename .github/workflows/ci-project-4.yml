@@ -1,4 +1,4 @@
-name: CI Project 4
+name: CI Project 4 (Word Count)
 
 on:
   push:
