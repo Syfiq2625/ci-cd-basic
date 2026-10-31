@@ -35,3 +35,5 @@ def test_most_common_word_case_insensitive():
 
 def test_most_common_word_empty():
     assert most_common_word("") is None
+
+# Picu workflows CI
