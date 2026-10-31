@@ -36,7 +36,7 @@ jobs:
       - name: Python-Version
         id: python-version
         run: |
-          if ["$PYTHONVERSION" == 3.12]; then
+          if [ "$PYTHONVERSION" == "3.12" ]; then
             echo "python_version=3.12" >> "$GITHUB_OUTPUT"
           else
             echo "python_version=invalid" >> "$GITHUB_OUTPUT"
@@ -57,4 +57,4 @@ jobs:
         continue-on-error: true
 
       - name: Version Success
-        run: echo "Version Success, Version python is ${{steps.python-version.outputs.python_version}}"
+        run: echo "Version Success, Version python is ${{ steps.python-version.outputs.python_version }}"
