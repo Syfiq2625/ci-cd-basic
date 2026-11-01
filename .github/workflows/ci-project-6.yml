@@ -1,0 +1,48 @@
+name: CI Project 6 (Log Analyzer)
+
+
+on:
+  push:
+    branches: [main]
+    paths: 'project-6/**'
+
+  pull_request:
+    branches: [main]
+    paths: 'project-6/**'
+
+
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    defaults:
+      run:
+        working-directory: ./project-6
+        shell: bash
+
+    env:
+      PYTHONVERSION: 3.12
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: setup-python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "${{env.PYTHONVERSION}}"
+        
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+    
+      - name: Run Test
+        run: |
+          python -m pytest -v
+          python main.py
+    
+    
