@@ -17,7 +17,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: './project-7'
+        working-directory: ./project-7
         shell: bash
 
     strategy:
@@ -51,7 +51,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: './project-7'
+        working-directory: ./project-7
         shell: bash
 
     strategy:
@@ -82,7 +82,7 @@ jobs:
     needs: [lint, type_check]
     defaults:
       run:
-        working-directory: './project-7'
+        working-directory: ./project-7
         shell: bash
 
     strategy:
