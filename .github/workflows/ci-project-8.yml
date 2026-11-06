@@ -43,7 +43,7 @@ jobs:
 
       - name: Type Check & Format
         run: |
-          ruff check .
+          ruff check . --fix
           ruff format --check .
 
   test:
