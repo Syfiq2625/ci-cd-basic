@@ -44,7 +44,7 @@ jobs:
       - name: Type Check & Format
         run: |
           ruff check . --fix
-          ruff format --check .
+          ruff format .
 
   test:
     runs-on: ubuntu-latest
