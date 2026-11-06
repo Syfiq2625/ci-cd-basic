@@ -3,10 +3,37 @@
 **/*.pyc
 **/.pytest_cache/
 **/.venv/
+*.py[cod]/
+*.egg-info/
+build/
+dist/
+.mypy_cache/
+.ruff_cache/
+.coverage/
+htmlcov/
+project-7/.coverage
 
 # Node
 **/node_modules/
 project-3/.venv/
+npm-debug.log*
+coverage/
 
 venv/
 .venv/
+
+# Logs & Temp
+*.tmp
+*.log
+.cache/
+
+# OS
+.DB_Store
+Thumbs.db
+dekstop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*~
