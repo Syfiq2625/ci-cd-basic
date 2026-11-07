@@ -43,8 +43,8 @@ jobs:
 
       - name: Ruff Check
         run: |
-          ruff check src/ test/ --fix
-          ruff format src/ test/
+          ruff check src/ tests/ --fix
+          ruff format src/ tests/
 
   security:
     runs-on: ubuntu-latest
