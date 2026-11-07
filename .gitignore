@@ -12,6 +12,7 @@ dist/
 .coverage/
 htmlcov/
 project-7/.coverage
+*$py.class
 
 # Node
 **/node_modules/
