@@ -134,4 +134,4 @@ jobs:
         run: python -m build
 
       - name: Package Validation
-        run: python -m twine check dist/*
+        run: python -m twine check --strict dist/*
