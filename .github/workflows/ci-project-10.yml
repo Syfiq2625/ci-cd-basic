@@ -127,3 +127,32 @@ jobs:
 
       - name: Validation Package
         run: python -m twine check --strict dist/*
+
+  docs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: project-10/requirements.txt
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build MKDOCS
+        run: mkdocs build
+
+      - name: Artifact mkdocs
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation-site
+          path: project-10/site
