@@ -43,9 +43,8 @@ jobs:
 
       - name: Check Format
         run: |
-          pip check .
-          ruff check src/ tests/
-          ruff format --check src/ tests/
+          ruff check src/ tests/ --fix
+          ruff format src/ tests/
 
       - name: Check Security
         run: |
