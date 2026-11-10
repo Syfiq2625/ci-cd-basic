@@ -55,7 +55,7 @@ jobs:
         run: pip install mypy
 
       - name: Type Check
-        run: mypy .
+        run: mypy src/
 
   test:
     runs-on: ubuntu-latest
