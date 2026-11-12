@@ -1,0 +1,50 @@
+name: CI Project 11 (Capstone)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'project-11/**'
+      - '.github/workflows/ci-project-11.yml'
+
+  pull_request:
+    branches: [main]
+    paths:
+      - 'project-11/**'
+      - '.github/workflows/ci-project-11.yml'
+
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: ./project-11
+    shell: bash
+
+on:
+  integrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: project-11/requirements.txt
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Ruff Check
+        run: |
+          ruff check src/ tests/ --fix
+          ruff format src/ tests/
+
+      - name: Run Test
+        run: python -m pytest -v
