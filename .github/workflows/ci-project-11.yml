@@ -20,7 +20,7 @@ defaults:
     working-directory: ./project-11
     shell: bash
 
-on:
+jobs:
   integrate:
     runs-on: ubuntu-latest
     timeout-minutes: 10
